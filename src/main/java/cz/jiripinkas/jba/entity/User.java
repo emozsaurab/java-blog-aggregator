@@ -1,4 +1,5 @@
 package cz.jiripinkas.jba.entity;
+
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -14,20 +15,21 @@ public class User {
 	@Id
 	@GeneratedValue
 	private Integer id;
-    private String name;
+
+	private String name;
+
 	private String email;
-    private String password;
-    
-    
-    @ManyToMany
-    @JoinTable
-    private List<Role> roles;
-    
-    
-    @OneToMany(mappedBy="user")
-    private List<Blog> blogs;
+
+	private String password;
 	
-    public List<Blog> getBlogs() {
+	@ManyToMany
+	@JoinTable
+	private List<Role> roles;
+	
+	@OneToMany(mappedBy="user")
+	private List<Blog> blogs;
+
+	public List<Blog> getBlogs() {
 		return blogs;
 	}
 
@@ -41,6 +43,14 @@ public class User {
 
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -67,15 +77,4 @@ public class User {
 		this.password = password;
 	}
 
-	
-	public Integer getId() {
-		
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
-	
 }
