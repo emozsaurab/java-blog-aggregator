@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +24,12 @@
 </head>
 <body>
 
+
+  <%@ taglib uri="http://tiles.apache.org/tags-tiles-extras" prefix="tilesx" %>
+  <!-- basically this will use this current attribute from from general.xml and it put it into page scope
+  and use in expression language and give condition like below  -->
+   <tilesx:useAttribute name="current"/>
+
 <div class="container">
 
 
@@ -40,8 +47,8 @@
           </div>
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li class="active"><a href='<spring:url value="/" />'>Home</a></li>
-              <li><a href="<spring:url value="/users.html" />">Users</a></li>
+              <li class="${current=='index' ? 'active' : ''}"><a href='<spring:url value="/" />'>Home</a></li>
+              <li class="${current=='users' ? 'active' : ''}"><a href="<spring:url value="/users.html" />">Users</a></li>
               <li><a href="#">Link</a></li>
             </ul>
           </div><!--/.nav-collapse -->
